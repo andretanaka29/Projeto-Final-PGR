@@ -1,13 +1,21 @@
 #include "mainwindow.h"
 #include <QtNetwork>
+#include <QtCore>
 
 MainWindow::MainWindow(QWidget *parent)
     : QWidget(parent)
 {
+    janela1 = new Janela;
     udpSocket.bind(8888);
 
     connect(&udpSocket, SIGNAL(readyRead()),
             this, SLOT(processPendingDatagrams()));
+
+    timer = new QTimer;
+
+    connect(timer, SIGNAL(timeout()), this, SLOT(sendDatagram()));
+
+    timer->start(2 * 1000);
 
     botaoSair = new QPushButton(tr("Sair"));
 
@@ -15,6 +23,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     fecharJanela = new QPushButton(tr("Fechar janela"));
     abrirJanela = new QPushButton(tr("Abrir janela"));
+
+    connect(fecharJanela, SIGNAL(clicked()), this, SLOT(comandoFecha()));
+    connect(abrirJanela, SIGNAL(clicked()), this, SLOT(comandoAbre()));
 
     estadoTempo = new QLineEdit;
     estadoJanela = new QLineEdit;
@@ -24,7 +35,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     relogio = new QTimeEdit;
 
-    estadoLabel = new QLabel("Estado da Janela");
+    estadoClimaLabel = new QLabel("Clima:");
+    estadoJanelaLabel = new QLabel("Estado da Janela:");
     comandoLabel = new QLabel("Comandos");
     timerLabel = new QLabel("Timer");
 
@@ -36,8 +48,9 @@ MainWindow::MainWindow(QWidget *parent)
     topLeftLayout->addWidget(abrirJanela);
 
     QVBoxLayout *topRightLayout = new QVBoxLayout;
-    topRightLayout->addWidget(estadoLabel);
+    topRightLayout->addWidget(estadoClimaLabel);
     topRightLayout->addWidget(estadoTempo);
+    topRightLayout->addWidget(estadoJanelaLabel);
     topRightLayout->addWidget(estadoJanela);
 
     QHBoxLayout *topLayout = new QHBoxLayout;
@@ -60,24 +73,43 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::processPendingDatagrams()
 {
     QByteArray datagram;
+    bool data1;
+    bool data2;
 
     do {
         datagram.resize(udpSocket.pendingDatagramSize());
         udpSocket.readDatagram(datagram.data(), datagram.size());
     } while (udpSocket.hasPendingDatagrams());
 
-    QString data;
-
     QDataStream in(&datagram, QIODevice::ReadOnly);
     in.setVersion(QDataStream::Qt_4_3);
-    in >> data;
+    in >> data1 >> data2;
 
-    estadoTempo->setText(data);
-    estadoJanela->setText(tr("Aberta"));
+    estadoTempo->setText(janela1->tempo(data1));
+    estadoJanela->setText(janela1->estadoJanela(data2));
+}
+
+void MainWindow::sendDatagram()
+{
+    QByteArray datagram;
+    QDataStream out(&datagram, QIODevice::WriteOnly);
+    out.setVersion(QDataStream::Qt_4_3);
+    out << sendData1 << sendData2;
+
+    udpSocket.writeDatagram(datagram, QHostAddress::LocalHost, 8888);
+}
+
+bool MainWindow::comandoAbre()
+{
+    return sendData2 = 0;
+}
+
+bool MainWindow::comandoFecha()
+{
+    return sendData2 = 1;
 }
 
 MainWindow::~MainWindow()
 {
 
 }
-

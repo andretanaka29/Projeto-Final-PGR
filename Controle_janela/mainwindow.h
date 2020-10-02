@@ -3,6 +3,8 @@
 
 #include <QtWidgets>
 #include <QUdpSocket>
+#include <QTimer>
+#include "janela.h"
 
 class MainWindow : public QWidget
 {
@@ -14,6 +16,9 @@ public:
 
 private slots:
     void processPendingDatagrams();
+    void sendDatagram();
+    bool comandoAbre();
+    bool comandoFecha();
 
 private:
     QUdpSocket udpSocket;
@@ -21,11 +26,21 @@ private:
     QPushButton *botaoSair;
     QPushButton *fecharJanela;
     QPushButton *abrirJanela;
+
     QLineEdit *estadoTempo;
     QLineEdit *estadoJanela;
+
     QLabel *comandoLabel;
-    QLabel *estadoLabel;
+    QLabel *estadoJanelaLabel;
+    QLabel *estadoClimaLabel;
     QLabel *timerLabel;
+
     QTimeEdit *relogio;
+    QTimer *timer;
+
+    Janela *janela1;
+    bool sendData1;
+    bool sendData2;
+
 };
 #endif // MAINWINDOW_H
