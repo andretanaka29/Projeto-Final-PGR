@@ -17,8 +17,8 @@ public:
 private slots:
     void processPendingDatagrams();
     void sendDatagram();
-    bool comandoAbre();
-    bool comandoFecha();
+    QString comandoAbre();
+    QString comandoFecha();
 
 private:
     QUdpSocket udpSocket;
@@ -39,8 +39,7 @@ private:
     QTimer *timer;
 
     Janela *janela1;
-    bool sendData1;
-    bool sendData2;
+    QString sendData1;
 
 };
 #endif // MAINWINDOW_H

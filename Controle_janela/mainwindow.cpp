@@ -73,8 +73,9 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::processPendingDatagrams()
 {
     QByteArray datagram;
-    bool data1;
-    bool data2;
+    QString teste;
+    //bool data1;
+    //bool data2;
 
     do {
         datagram.resize(udpSocket.pendingDatagramSize());
@@ -83,10 +84,11 @@ void MainWindow::processPendingDatagrams()
 
     QDataStream in(&datagram, QIODevice::ReadOnly);
     in.setVersion(QDataStream::Qt_4_3);
-    in >> data1 >> data2;
+    in >> teste;
 
-    estadoTempo->setText(janela1->tempo(data1));
-    estadoJanela->setText(janela1->estadoJanela(data2));
+    estadoTempo->setText(teste);
+    //estadoTempo->setText(janela1->tempo(data1));
+    //estadoJanela->setText(janela1->estadoJanela(data2));
 }
 
 void MainWindow::sendDatagram()
@@ -94,19 +96,19 @@ void MainWindow::sendDatagram()
     QByteArray datagram;
     QDataStream out(&datagram, QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_4_3);
-    out << sendData1 << sendData2;
+    out << sendData1;
 
-    udpSocket.writeDatagram(datagram, QHostAddress::LocalHost, 8888);
+    udpSocket.writeDatagram(datagram, QHostAddress("192.168.0.177"), 8888);
 }
 
-bool MainWindow::comandoAbre()
+QString MainWindow::comandoAbre()
 {
-    return sendData2 = 0;
+    return sendData1 = "a";
 }
 
-bool MainWindow::comandoFecha()
+QString MainWindow::comandoFecha()
 {
-    return sendData2 = 1;
+    return sendData1 = "f";
 }
 
 MainWindow::~MainWindow()
