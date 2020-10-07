@@ -74,41 +74,30 @@ void MainWindow::processPendingDatagrams()
 {
     QByteArray datagram;
     QString teste;
-    //bool data1;
-    //bool data2;
 
     do {
         datagram.resize(udpSocket.pendingDatagramSize());
         udpSocket.readDatagram(datagram.data(), datagram.size());
     } while (udpSocket.hasPendingDatagrams());
 
-    QDataStream in(&datagram, QIODevice::ReadOnly);
-    in.setVersion(QDataStream::Qt_4_3);
-    in >> teste;
-
-    estadoTempo->setText(teste);
+    estadoTempo->setText(datagram.data());
     //estadoTempo->setText(janela1->tempo(data1));
     //estadoJanela->setText(janela1->estadoJanela(data2));
 }
 
 void MainWindow::sendDatagram()
 {
-    QByteArray datagram;
-    QDataStream out(&datagram, QIODevice::WriteOnly);
-    out.setVersion(QDataStream::Qt_4_3);
-    out << sendData1;
-
-    udpSocket.writeDatagram(datagram, QHostAddress("192.168.0.177"), 8888);
+    udpSocket.writeDatagram(QByteArray(1, sendData1), QHostAddress("192.168.0.177"), 8888);
 }
 
-QString MainWindow::comandoAbre()
+char MainWindow::comandoAbre()
 {
-    return sendData1 = "a";
+    return sendData1 = 'a';
 }
 
-QString MainWindow::comandoFecha()
+char MainWindow::comandoFecha()
 {
-    return sendData1 = "f";
+    return sendData1 = 'f';
 }
 
 MainWindow::~MainWindow()

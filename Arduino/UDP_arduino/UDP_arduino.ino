@@ -30,10 +30,10 @@ unsigned int localPort = 8888;              // local port to listen on
 
 // buffers for receiving and sending data
 char packetBuffer[UDP_TX_PACKET_MAX_SIZE];  //buffer to hold incoming packet,
-//char ReplyBuffer[] = "arduino";       // a string to send back
 
 // An EthernetUDP instance to let us send and receive packets over UDP
 EthernetUDP Udp;
+
 
 void setup() {
   // start the Ethernet and UDP:
@@ -41,6 +41,7 @@ void setup() {
   Udp.begin(localPort);
 
   Serial.begin(9600);
+
 }
 
 void loop() {
@@ -69,14 +70,13 @@ void loop() {
     Serial.println("Contents:");
     Serial.println(packetBuffer);
 
-    char ReplyBuffer[packetSize];
-    ReplyBuffer[packetSize] = packetBuffer;
     //send a reply, to the IP address and port that sent us the packet we received
     Udp.beginPacket(Udp.remoteIP(), Udp.remotePort());
-    Udp.write(ReplyBuffer);
+    Udp.write(packetBuffer);
     Udp.endPacket();
-    Serial.println(ReplyBuffer);
+    Serial.println(packetBuffer);
   }
+
   
   delay(100);
 }

@@ -1,8 +1,9 @@
 #include "janela.h"
+#include <QtCore>
 
-QString Janela::tempo(bool sensorChuva)
+QString Janela::tempo(char dataArduino)
 {
-    if(sensorChuva)
+    if(dataArduino)
     {
         _clima = "Está chovendo!";
     }
@@ -14,9 +15,9 @@ QString Janela::tempo(bool sensorChuva)
     return _clima;
 }
 
-QString Janela::estadoJanela(bool sensorJanela)
+QString Janela::estadoJanela(char dataArduino)
 {
-    if(sensorJanela)
+    if(dataArduino)
     {
         _janela = "Janela fechada!";
     }

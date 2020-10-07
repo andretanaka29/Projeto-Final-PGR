@@ -2,13 +2,17 @@
 #define JANELA_H
 
 #include <QString>
+#include <QtWidgets>
+#include <QUdpSocket>
+#include <QTimer>
 
-class Janela
+class Janela : public QWidget
 {
+
     public:
         Janela(){};
-        QString tempo(bool sensorChuva);
-        QString estadoJanela(bool sensorJanela);
+        QString tempo(char dataArduino);
+        QString estadoJanela(char dataArduino);
 
     private:
         QString _clima;
