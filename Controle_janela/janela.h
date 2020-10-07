@@ -11,8 +11,8 @@ class Janela : public QWidget
 
     public:
         Janela(){};
-        QString tempo(char dataArduino);
-        QString estadoJanela(char dataArduino);
+        QString tempo(char *dataArduino);
+        QString estadoJanela(char *dataArduino);
 
     private:
         QString _clima;

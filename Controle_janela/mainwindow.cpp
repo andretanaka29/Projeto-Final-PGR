@@ -73,16 +73,14 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::processPendingDatagrams()
 {
     QByteArray datagram;
-    QString teste;
 
     do {
         datagram.resize(udpSocket.pendingDatagramSize());
         udpSocket.readDatagram(datagram.data(), datagram.size());
     } while (udpSocket.hasPendingDatagrams());
 
-    estadoTempo->setText(datagram.data());
-    //estadoTempo->setText(janela1->tempo(data1));
-    //estadoJanela->setText(janela1->estadoJanela(data2));
+    estadoTempo->setText(janela1->tempo(datagram.data()));
+    estadoJanela->setText(janela1->estadoJanela(datagram.data()));
 }
 
 void MainWindow::sendDatagram()
