@@ -39,7 +39,7 @@ int sensorJanela1 = 7;  //sensor para saber se a janela está fechada.
 int sensorJanela2 = 6;  //sensor para saber se a janela está totalmente aberta.
 int sensorChuva = 5;
 int sentidoMotor = 2;  //flag de sentido do motor.
-int acionaMotor = 8;
+int acionaMotor = 3;
 
 void setup() {
   // start the Ethernet and UDP:
@@ -58,7 +58,7 @@ void setup() {
 void loop() {
   // if there's data available, read a packet
   int packetSize = Udp.parsePacket();
-  char sensores, dado;
+  char sensores;
 
   //bit 2 e bit 6 são sempre em 1 para que o caracter fique em uma faixa sem caracteres especiais.
   bitSet(sensores, 2);
@@ -102,8 +102,6 @@ void loop() {
     Udp.read(packetBuffer, UDP_TX_PACKET_MAX_SIZE);
     Serial.println("Contents:");
     Serial.println(packetBuffer);
-
-    dado = packetBuffer;
 
     //send a reply, to the IP address and port that sent us the packet we received
     Udp.beginPacket(Udp.remoteIP(), Udp.remotePort());

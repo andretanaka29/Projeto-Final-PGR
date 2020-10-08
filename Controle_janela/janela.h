@@ -5,18 +5,32 @@
 #include <QtWidgets>
 #include <QUdpSocket>
 #include <QTimer>
+#include <QObject>
 
-class Janela : public QWidget
+class Janela : public QObject
 {
+    Q_OBJECT
 
-    public:
-        Janela(){};
-        QString tempo(char *dataArduino);
-        QString estadoJanela(char *dataArduino);
+public:
+    Janela(QObject *parent = 0);
 
-    private:
-        QString _clima;
-        QString _janela;
+    char sendData;
+    QString _clima;
+    QString _janela;
+
+public slots:
+    char comandoAbre();
+    char comandoFecha();
+    void sendDatagram();
+    void processPendingDatagrams();
+
+private:
+    QUdpSocket udpSocket;
+    QTimer *timer;
+
+
+    void tempo(char *dataArduino);
+    void estadoJanela(char *dataArduino);
 
 };
 
