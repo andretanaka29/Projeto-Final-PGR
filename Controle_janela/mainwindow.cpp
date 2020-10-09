@@ -30,8 +30,11 @@ MainWindow::MainWindow(QWidget *parent)
     comandoLabel = new QLabel("Comandos");
     timerLabel = new QLabel("Timer");
 
-    estadoTempo->setText(janela1->_clima);
-    estadoJanela->setText(janela1->_janela);
+    atualizar = new QTimer;
+    connect(atualizar, SIGNAL(timeout()), this, SLOT(atualizaEstado()));
+    atualizar->start(500);
+    //estadoTempo->setText(janela1->_clima);
+    //estadoJanela->setText(janela1->_janela);
 
     QVBoxLayout *topLeftLayout = new QVBoxLayout;
     topLeftLayout->addWidget(comandoLabel);
@@ -63,6 +66,11 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowTitle(tr("Controle de janela"));
 }
 
+void MainWindow::atualizaEstado()
+{
+    estadoTempo->setText(janela1->_clima);
+    estadoJanela->setText(janela1->_janela);
+}
 
 MainWindow::~MainWindow()
 {

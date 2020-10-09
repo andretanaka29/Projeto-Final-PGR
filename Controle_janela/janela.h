@@ -14,13 +14,12 @@ class Janela : public QObject
 public:
     Janela(QObject *parent = 0);
 
-    char sendData;
     QString _clima;
     QString _janela;
 
 public slots:
-    char comandoAbre();
-    char comandoFecha();
+    void comandoAbre();
+    void comandoFecha();
     void sendDatagram();
     void processPendingDatagrams();
 
@@ -28,9 +27,8 @@ private:
     QUdpSocket udpSocket;
     QTimer *timer;
 
-
-    void tempo(char *dataArduino);
-    void estadoJanela(char *dataArduino);
+    QString tempo(char *dataArduino);
+    QString estadoJanela(char *dataArduino);
 
 };
 

@@ -18,42 +18,46 @@ Janela::Janela(QObject *parent)
     timer->start(2 * 1000);
 }
 
-void Janela::tempo(char *dataArduino)
+QString Janela::tempo(char *dataArduino)
 {
+    QString _tempo;
+
     if(*dataArduino == 'U' || *dataArduino == 'T')
     {
-        _clima = "Está chovendo!";
+        _tempo = "Está chovendo!";
     }
     else
     {
-        _clima = "Sem chuva!";
+        _tempo = "Sem chuva!";
     }
 
-    //return _clima;
+    return _tempo;
 }
 
-void Janela::estadoJanela(char *dataArduino)
+QString Janela::estadoJanela(char *dataArduino)
 {
+    QString _estadoJanela;
+
     if(*dataArduino == 'U' || *dataArduino == 'E')
     {
-        _janela = "Janela fechada!";
+        _estadoJanela = "Janela fechada!";
     }
     else
     {
-        _janela = "Janela aberta!";
+        _estadoJanela = "Janela aberta!";
     }
 
-    //return _janela;
+    return _estadoJanela;
 }
 
-char Janela::comandoAbre()
+void Janela::comandoAbre()
 {
-    return sendData = 'a';
+    udpSocket.writeDatagram(QByteArray(1, 'a'), QHostAddress("192.168.0.177"), 8888);
 }
 
-char Janela::comandoFecha()
+void Janela::comandoFecha()
 {
-    return sendData = 'f';
+    udpSocket.writeDatagram(QByteArray(1, 'f'), QHostAddress("192.168.0.177"), 8888);
 }
 
 void Janela::processPendingDatagrams()
@@ -65,12 +69,12 @@ void Janela::processPendingDatagrams()
         udpSocket.readDatagram(datagram.data(), datagram.size());
     } while (udpSocket.hasPendingDatagrams());
 
-    tempo(datagram.data());
-    estadoJanela(datagram.data());
+    _clima = tempo(datagram.data());
+    _janela = estadoJanela(datagram.data());
 
 }
 
 void Janela::sendDatagram()
 {
-    udpSocket.writeDatagram(QByteArray(1, sendData), QHostAddress("192.168.0.177"), 8888);
+    udpSocket.writeDatagram(QByteArray(1, 'e'), QHostAddress("192.168.0.177"), 8888);
 }

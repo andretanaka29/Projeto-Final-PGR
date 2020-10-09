@@ -53,6 +53,9 @@ void setup() {
   pinMode(sensorChuva, INPUT);
   pinMode(sentidoMotor, OUTPUT);
   pinMode(acionaMotor, OUTPUT);
+
+  digitalWrite(sentidoMotor, LOW);
+  digitalWrite(acionaMotor, LOW);
 }
 
 void loop() {
@@ -121,11 +124,6 @@ void loop() {
   {
     digitalWrite(sentidoMotor, HIGH);
     digitalWrite(acionaMotor, LOW);   //no módulo de ponte H com a flag de inversão acionada a lógica é invertida.
-  }
-  else
-  {
-    digitalWrite(sentidoMotor, LOW);
-    digitalWrite(acionaMotor, LOW);
   }
 
   //chovendo e com a janela aberta é dado o comando para fechar a janela.

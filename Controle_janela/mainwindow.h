@@ -29,7 +29,12 @@ private:
 
     QTimeEdit *relogio;
 
+    QTimer *atualizar;
+
     Janela *janela1;
+
+private slots:
+    void atualizaEstado();
 
 };
 #endif // MAINWINDOW_H
