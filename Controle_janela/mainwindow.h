@@ -4,6 +4,7 @@
 #include <QtWidgets>
 #include <QUdpSocket>
 #include <QTimer>
+#include <QLineEdit>
 #include "janela.h"
 
 class MainWindow : public QWidget
@@ -19,6 +20,7 @@ private:
     QPushButton *fecharJanela;
     QPushButton *abrirJanela;
 
+    QLineEdit *ipEdit;
     QLineEdit *estadoTempo;
     QLineEdit *estadoJanela;
 
@@ -26,6 +28,7 @@ private:
     QLabel *estadoJanelaLabel;
     QLabel *estadoClimaLabel;
     QLabel *timerLabel;
+    QLabel *ipLabel;
 
     QTimeEdit *relogio;
 

@@ -18,6 +18,11 @@ Janela::Janela(QObject *parent)
     timer->start(2 * 1000);
 }
 
+void Janela::ipJanela(const QString &text)
+{
+    ip_janela = text;
+}
+
 QString Janela::tempo(char *dataArduino)
 {
     QString _tempo;
@@ -52,12 +57,12 @@ QString Janela::estadoJanela(char *dataArduino)
 
 void Janela::comandoAbre()
 {
-    udpSocket.writeDatagram(QByteArray(1, 'a'), QHostAddress("192.168.0.177"), 8888);
+    udpSocket.writeDatagram(QByteArray(1, 'a'), QHostAddress(ip_janela), 8888);
 }
 
 void Janela::comandoFecha()
 {
-    udpSocket.writeDatagram(QByteArray(1, 'f'), QHostAddress("192.168.0.177"), 8888);
+    udpSocket.writeDatagram(QByteArray(1, 'f'), QHostAddress(ip_janela), 8888);
 }
 
 void Janela::processPendingDatagrams()
@@ -76,5 +81,5 @@ void Janela::processPendingDatagrams()
 
 void Janela::sendDatagram()
 {
-    udpSocket.writeDatagram(QByteArray(1, 'e'), QHostAddress("192.168.0.177"), 8888);
+    udpSocket.writeDatagram(QByteArray(1, 'e'), QHostAddress(ip_janela), 8888);
 }

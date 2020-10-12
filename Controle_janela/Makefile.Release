@@ -1081,6 +1081,7 @@ release/moc_mainwindow.cpp: mainwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qhostaddress.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QTimer \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QLineEdit \
 		janela.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		release/moc_predefs.h \
@@ -2123,6 +2124,7 @@ release/main.o: main.cpp mainwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qhostaddress.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QTimer \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QLineEdit \
 		janela.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QApplication
@@ -2609,6 +2611,7 @@ release/mainwindow.o: mainwindow.cpp mainwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qhostaddress.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QTimer \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QLineEdit \
 		janela.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QtNetwork \

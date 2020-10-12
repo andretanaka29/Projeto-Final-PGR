@@ -15,9 +15,10 @@ public:
     Janela(QObject *parent = 0);
 
     QString _clima;
-    QString _janela;
+    QString _janela;  
 
 public slots:
+    void ipJanela(const QString &text);
     void comandoAbre();
     void comandoFecha();
     void sendDatagram();
@@ -29,6 +30,7 @@ private:
 
     QString tempo(char *dataArduino);
     QString estadoJanela(char *dataArduino);
+    QString ip_janela;
 
 };
 

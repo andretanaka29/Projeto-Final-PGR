@@ -114,7 +114,7 @@ void loop() {
   }
 
   Serial.println(packetBuffer);
-  if ((packetBuffer == 'a') && digitalRead(sensorJanela2))
+  if ((packetBuffer == 'a') && digitalRead(sensorJanela2) && !digitalRead(sensorChuva))
   {
     digitalWrite(sentidoMotor, LOW);
     digitalWrite(acionaMotor, HIGH);

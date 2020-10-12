@@ -17,6 +17,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(fecharJanela, SIGNAL(clicked()), janela1, SLOT(comandoFecha()));
     connect(abrirJanela, SIGNAL(clicked()), janela1, SLOT(comandoAbre()));
 
+    ipEdit = new QLineEdit;
+    ipLabel = new QLabel("IP:");
+
+    connect(ipEdit, SIGNAL(textChanged(const QString &)),
+                janela1, SLOT(ipJanela(const QString &)));
+
     estadoTempo = new QLineEdit;
     estadoJanela = new QLineEdit;
 
@@ -33,8 +39,10 @@ MainWindow::MainWindow(QWidget *parent)
     atualizar = new QTimer;
     connect(atualizar, SIGNAL(timeout()), this, SLOT(atualizaEstado()));
     atualizar->start(500);
-    //estadoTempo->setText(janela1->_clima);
-    //estadoJanela->setText(janela1->_janela);
+
+    QHBoxLayout *topLineLayout = new QHBoxLayout;
+    topLineLayout->addWidget(ipLabel);
+    topLineLayout->addWidget(ipEdit);
 
     QVBoxLayout *topLeftLayout = new QVBoxLayout;
     topLeftLayout->addWidget(comandoLabel);
@@ -58,6 +66,7 @@ MainWindow::MainWindow(QWidget *parent)
     bottomLayout->addStretch();
 
     QVBoxLayout *mainLayout = new QVBoxLayout;
+    mainLayout->addLayout(topLineLayout);
     mainLayout->addLayout(topLayout);
     mainLayout->addLayout(bottomLayout);
 
