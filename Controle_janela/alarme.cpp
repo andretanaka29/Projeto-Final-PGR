@@ -3,12 +3,12 @@
 Alarme::Alarme(QObject *parent) : QObject(parent)
 {
     connect(&timer,SIGNAL(timeout()),this,SLOT(comparaHorario()));
+    timer.start(60*1000);
 }
 
 void Alarme::iniciaAlarme(QTime horario)
 {
     horarioAlarme = horario;
-    timer.start(60*1000);
 }
 
 void Alarme::comparaHorario()
