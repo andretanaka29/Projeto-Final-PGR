@@ -177,6 +177,10 @@ debug/moc_alarme.cpp: alarme.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QTimer \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/qtimer.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/qbasictimer.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QTime \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qdatetime.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qshareddata.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/qhash.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/Engenharia Eletrônica/2020-1/Programação orientada a objeto/Projeto-Final-PGR/Controle_janela/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/Engenharia Eletrônica/2020-1/Programação orientada a objeto/Projeto-Final-PGR/Controle_janela" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include alarme.h -o debug\moc_alarme.cpp
@@ -1152,6 +1156,7 @@ debug/moc_mainwindow.cpp: mainwindow.h \
 		janela.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		alarme.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QTime \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include "D:/Engenharia Eletrônica/2020-1/Programação orientada a objeto/Projeto-Final-PGR/Controle_janela/debug/moc_predefs.h" -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -I"D:/Engenharia Eletrônica/2020-1/Programação orientada a objeto/Projeto-Final-PGR/Controle_janela" -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include mainwindow.h -o debug\moc_mainwindow.cpp
@@ -2259,6 +2264,7 @@ debug/main.o: main.cpp mainwindow.h \
 		janela.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		alarme.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QTime \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QApplication
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o main.cpp
 
@@ -2747,6 +2753,7 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		janela.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		alarme.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QTime \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QtNetwork \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/QtNetworkDepends \
 		C:/Qt/5.15.1/mingw81_64/include/QtNetwork/qabstractnetworkcache.h \

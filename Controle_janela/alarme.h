@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QTimer>
+#include <QTime>
 
 class Alarme : public QObject
 {
@@ -13,8 +14,8 @@ public:
     void iniciaAlarme(QTime horario);
 
 private:
-    QTimer *timer;
-    QTime *horarioAlarme;
+    QTimer timer;
+    QTime horarioAlarme;
 
 private slots:
     void comparaHorario();
