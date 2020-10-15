@@ -6,6 +6,7 @@
 #include <QTimer>
 #include <QLineEdit>
 #include "janela.h"
+#include "alarme.h"
 
 class MainWindow : public QWidget
 {
@@ -19,6 +20,7 @@ private:
     QPushButton *botaoSair;
     QPushButton *fecharJanela;
     QPushButton *abrirJanela;
+    QPushButton *iniciaTimer;
 
     QLineEdit *ipEdit;
     QLineEdit *estadoTempo;
@@ -35,9 +37,11 @@ private:
     QTimer *atualizar;
 
     Janela *janela1;
+    Alarme *alarme;
 
 private slots:
     void atualizaEstado();
+    void ligaTimer();
 
 };
 #endif // MAINWINDOW_H

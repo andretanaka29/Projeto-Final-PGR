@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QWidget(parent)
 {
     janela1 = new Janela;
+    alarme = new Alarme;
 
     botaoSair = new QPushButton(tr("Sair"));
 
@@ -30,6 +31,10 @@ MainWindow::MainWindow(QWidget *parent)
     estadoJanela->setReadOnly(true);
 
     relogio = new QTimeEdit;
+    iniciaTimer = new QPushButton(tr("Inicia Timer"));
+
+    connect(iniciaTimer, SIGNAL(clicked()), this, SLOT(ligaTimer()));
+    connect(alarme, SIGNAL(tocaAlarme()), janela1, SLOT(comandoFecha()));
 
     estadoClimaLabel = new QLabel("Clima:");
     estadoJanelaLabel = new QLabel("Estado da Janela:");
@@ -48,6 +53,7 @@ MainWindow::MainWindow(QWidget *parent)
     topLeftLayout->addWidget(comandoLabel);
     topLeftLayout->addWidget(timerLabel);
     topLeftLayout->addWidget(relogio);
+    topLeftLayout->addWidget(iniciaTimer);
     topLeftLayout->addWidget(fecharJanela);
     topLeftLayout->addWidget(abrirJanela);
 
@@ -79,6 +85,12 @@ void MainWindow::atualizaEstado()
 {
     estadoTempo->setText(janela1->_clima);
     estadoJanela->setText(janela1->_janela);
+}
+
+void MainWindow::ligaTimer()
+{
+    QTime horario = relogio->time();
+    alarme->iniciaAlarme(horario);
 }
 
 MainWindow::~MainWindow()
